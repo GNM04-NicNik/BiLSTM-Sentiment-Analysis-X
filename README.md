@@ -1,5 +1,5 @@
 # BiLSTM-Sentiment-Analysis-X
-Analisis Sentimen Publik terhadap ChatGPT berdasarkan Tweet pada Platform Media Sosial 𝕏 Menggunakan Model Bidirectional Long Short-Term Memory (BiLSTM) 
+## Analisis Sentimen Publik terhadap ChatGPT berdasarkan Tweet pada Platform Media Sosial 𝕏 Menggunakan Model Bidirectional Long Short-Term Memory (BiLSTM) 
 
 
 
