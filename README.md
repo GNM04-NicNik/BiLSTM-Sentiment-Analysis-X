@@ -9,7 +9,7 @@
 **2. Variabel**  
 <p align="justify">Dataset from Huggingface: https://huggingface.co/datasets/prithivMLmods/GPT-Sentiment-Analysis-200K<p align="justify">  
 
-<p align="justify">Dataset sudah diberikan label. Jumlah data ada sebanyak 219,294 dan terdapat 3 kolom yaitu,</p>
+Dataset sudah diberikan label. Jumlah data ada sebanyak 219,294 dan terdapat 3 kolom yaitu,
 - id: Id atau nilai unik tiap tweet
 - Tweet: Konten tweet berupa teks 
 - Labels: Kategori sentimen tweet (Neutral, Good, Bad)
