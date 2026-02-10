@@ -61,10 +61,9 @@
 <p align="justify">Rata-rata akurasi model mencapai 0.85 atau 85% yang mana sesuai dengan akurasi validasi saat pelatihan model. Model berarti berhasil memprediksi sebesar 85% dari total atau keseluruhan tweet. Hasil macro average di sekitar 0.84 dan weighted average 0.85 di semua kategori menunjukkan. Namun, Precision, Recall, dan F1-Score untuk label ‘Neutral’ masih kurang.</p>  
 
 **6. Saran**
-<p align="justify">
-- Mempertimbangkan untuk menggunakan model lain ataupun memberikan konstruksi model BiLSTM yang lebih lengkap
-- Meninjau Kebijakan penentuan panjang sekuens maksimum
-- Penambahan epoch</p>
+* Mempertimbangkan untuk menggunakan model lain ataupun memberikan konstruksi model BiLSTM yang lebih lengkap
+* Meninjau Kebijakan penentuan panjang sekuens maksimum
+* Penambahan epoch
 
 
 
