@@ -46,21 +46,24 @@ Word Cloud juga dibuat untuk melihat kata-kata terumum secara keseluruhan dari t
 
 Gambar berikut menunjukkan dengan jelas adanya *imbalanced* pada data. 
 <img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/233367bc-8e36-4411-87a8-3ea0e04a6a47" />  
-Tweet dengan label ‘Bad’ ada sekitar 49.2%, ‘Neutral’ ada sekitar 25.3%, dan label ‘Good’ ada sekitar 25.5%. Oleh sebab itu,  metode *Synthetic Minority Over-sampling* (SMOTE) digunakan untuk menyeimbangkan distribusi labelnya.
+Tweet dengan label ‘Bad’ ada sekitar 49.2%, ‘Neutral’ ada sekitar 25.3%, dan label ‘Good’ ada sekitar 25.5%. Oleh sebab itu,  metode *Synthetic Minority Over-sampling* (SMOTE) digunakan untuk menyeimbangkan distribusi labelnya.  
 
-<img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/acb847b7-b574-4d7d-b808-5710ed8ff916" />
+Selanjutnya, model BiLSTM dikonstruksi. Model dibuat dengan pertama memberikan lapisan Embedding dengan jumlah kosakata 4000 dan panjang vektor masing-masing kata adalah 35. Lapisan Bidirectional LSTM ditambahkan pada model dengan jumlah neuron sebanyak 256 sebab proses dilakukan backward dan forward secara paralel. Pada lalpisan ini ditentukan 50% input data dibuang atau tidak digunakan pada saat training. Hal ini bertujuan untuk regularisasi pelatihan model dan menghindari overfitting. Setelah itu, lapisan SelfAttention ditambahkan agar memahami konteks teks lebih baik dengan cara melihat kalimat secara keseluruhan. Lapisan ini juga memberikan bobot kepada token yang signifikan untuk memahami konteks teks. Kemudian, lapisan pooling ditambahkan agar dimensi menjadi lebih kecil dengan mengubah sekuens menjadi sebuah vektor. Ukuran setelah direduksi akan berdimensi 256 x 1 dan diambil fitur dengan nilai maksimum dari tiap sekuens. Batch Normalitzation dilakukan untuk stabilisasi training data. Selanjutnya, lapisan fully connected dengan 64 neuron ditambahkan dan dengan fungsi aktivasi Rectified Linear Unit (reLU) digunakan agar mendeteksi adanya pola non-linear atau pola-pola kompleks lainnya pada data. Lapisan Output berfungsi untuk mengeluarkan hasil final pada klasifikasi. Lapisan ini pada model memiliki tiga neuron dan fungsi aktivasi softmax dipilih sebab sentimen atau label memiliki lebih dari dua kategori. Model selanjutnya disatukan dan metode optimizer Adam dengan learning 0.001 dipilih untuk pelatihan model. Loss dihitung dengan ‘categorical_crossentropy’. 
 
-Selanjutnya, model BiLSTM dikonstruksi. Model dibuat dengan pertama memberikan lapisan Embedding dengan jumlah kosakata 4000 dan panjang vektor masing-masing kata adalah 35. Lapisan Bidirectional LSTM ditambahkan pada model dengan jumlah neuron sebanyak 256 sebab proses dilakukan backward dan forward secara paralel. Pada lalpisan ini ditentukan 50% input data dibuang atau tidak digunakan pada saat training. Hal ini bertujuan untuk regularisasi pelatihan model dan menghindari overfitting. Setelah itu, lapisan SelfAttention ditambahkan agar memahami konteks teks lebih baik dengan cara melihat kalimat secara keseluruhan. Lapisan ini juga memberikan bobot kepada token yang signifikan untuk memahami konteks teks. Kemudian, lapisan pooling ditambahkan agar dimensi menjadi lebih kecil dengan mengubah sekuens menjadi sebuah vektor. Ukuran setelah direduksi akan berdimensi 256 x 1 dan diambil fitur dengan nilai maksimum dari tiap sekuens.  
+<img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/acb847b7-b574-4d7d-b808-5710ed8ff916" />  
 
-Batch Normalitzation dilakukan untuk stabilisasi training data. Selanjutnya, lapisan fully connected dengan 64 neuron ditambahkan dan dengan fungsi aktivasi Rectified Linear Unit (reLU) digunakan agar mendeteksi adanya pola non-linear atau pola-pola kompleks lainnya pada data. Lapisan Output berfungsi untuk mengeluarkan hasil final pada klasifikasi. Lapisan ini pada model memiliki tiga neuron dan fungsi aktivasi softmax dipilih sebab sentimen atau label memiliki lebih dari dua kategori. Model selanjutnya disatukan dan metode optimizer Adam dengan learning 0.001 dipilih untuk pelatihan model. Loss dihitung dengan ‘categorical_crossentropy’.  
-
+Evaluasi model pertama adalah melihat akurasi serta loss saat pelatihan. Hasil akurasi menunjukkan ada tampak permasalahan overfitting pada validasi sebab berbeda cukup besar. Hal ini mungkin disebabkan kurangnya regulasi pada arsitektur model. Hasil ini juga mungkin disebabkan oleh kurang lengkap atau menyeluruh dalam proses persiapan data teks sehingga masih banyak kata-kata yang tidak informatif pada saat training. Namun, pergerakan akurasi dan loss terlihat semakin menuju pada titik yang sama. 
+ 
 <img width="643" height="242" alt="image" src="https://github.com/user-attachments/assets/a6c18a82-1d57-49f6-b02b-9c8783201c44" />  
 
-Evaluasi model pertama adalah melihat akurasi serta loss saat pelatihan. Hasil akurasi menunjukkan ada tampak permasalahan overfitting pada validasi sebab berbeda cukup besar. Hal ini mungkin disebabkan kurangnya regulasi pada arsitektur model. Hasil ini juga mungkin disebabkan oleh kurang lengkap atau menyeluruh dalam proses persiapan data teks sehingga masih banyak kata-kata yang tidak informatif pada saat training. Namun, pergerakan akurasi dan loss terlihat semakin menuju pada titik yang sama.  
+<img width="567" height="455" alt="image" src="https://github.com/user-attachments/assets/d6c1f363-f763-4641-9617-cf8f2e9271fb" />   
 
-Rata-rata akurasi model mencapai 0.85 atau 85% yang mana sesuai dengan akurasi validasi saat pelatihan model. Model berarti berhasil memprediksi sebesar 85% dari total atau keseluruhan tweet. Hasil macro average di sekitar 0.84 dan weighted average 0.85 di semua kategori menunjukkan. Namun, Precision, Recall, dan F1-Score untuk label ‘Neutral’ masih kurang.
+Rata-rata akurasi model mencapai 0.85 atau 85% yang mana sesuai dengan akurasi validasi saat pelatihan model. Model berarti berhasil memprediksi sebesar 85% dari total atau keseluruhan tweet. Hasil macro average di sekitar 0.84 dan weighted average 0.85 di semua kategori menunjukkan. Namun, Precision, Recall, dan F1-Score untuk label ‘Neutral’ masih kurang.  
 
-<img width="567" height="455" alt="image" src="https://github.com/user-attachments/assets/d6c1f363-f763-4641-9617-cf8f2e9271fb" />  
+**6. Saran**
+- Mempertimbangkan untuk menggunakan model lain ataupun memberikan konstruksi model BiLSTM yang lebih lengkap
+- Meninjau Kebijakan penentuan panjang sekuens maksimum
+- Penambahan epoch
 
 
 
