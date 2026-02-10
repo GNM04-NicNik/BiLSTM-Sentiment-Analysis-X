@@ -18,7 +18,7 @@
 <p align="justify">Berikut proses pengerjaannya:</p>
 <img width="810" height="374" alt="image" src="https://github.com/user-attachments/assets/dfb44c8e-7855-4da3-9033-d39da72b7bc3" />
 
-<p align="justify">*Text processing* merupakan langkah krusial dalam melakukan analisa data teks. Pada projek ini, tahapan berikut dilakukan pada dataset:</p>
+*Text processing* merupakan langkah krusial dalam melakukan analisa data teks. Pada projek ini, tahapan berikut dilakukan pada dataset:
 1) *Lowercasing* atau pembuatan kata pada teks menjadi huruf kecil semua.
 2) Penghapusan spasi ekstra atau lebih
 3) Penghapusan URL atau Hyperlink
