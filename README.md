@@ -9,16 +9,16 @@
 **2. Variabel**  
 <p align="justify">Dataset from Huggingface: https://huggingface.co/datasets/prithivMLmods/GPT-Sentiment-Analysis-200K<p align="justify">  
 
-<p align="justify">Dataset sudah diberikan label. Jumlah data ada sebanyak 219,294 dan terdapat 3 kolom yaitu,<p align="justify">
+<p align="justify">Dataset sudah diberikan label. Jumlah data ada sebanyak 219,294 dan terdapat 3 kolom yaitu,</p>
 - id: Id atau nilai unik tiap tweet
 - Tweet: Konten tweet berupa teks 
-- Labels: Kategori sentimen tweet (Neutral, Good, Bad)</p>
+- Labels: Kategori sentimen tweet (Neutral, Good, Bad)
 
 **3. Metode**  
 <p align="justify">Berikut proses pengerjaannya:</p>
 <img width="810" height="374" alt="image" src="https://github.com/user-attachments/assets/dfb44c8e-7855-4da3-9033-d39da72b7bc3" />
 
-<p align="justify">*Text processing* merupakan langkah krusial dalam melakukan analisa data teks. Pada projek ini, tahapan berikut dilakukan pada dataset:
+<p align="justify">*Text processing* merupakan langkah krusial dalam melakukan analisa data teks. Pada projek ini, tahapan berikut dilakukan pada dataset:</p>
 1) *Lowercasing* atau pembuatan kata pada teks menjadi huruf kecil semua.
 2) Penghapusan spasi ekstra atau lebih
 3) Penghapusan URL atau Hyperlink
@@ -27,7 +27,7 @@
 6) Memperpanjang kata (e.g. isn’t menjadi is not)
 7) Buang karaketer yang bukan bagian dari alfabet
 8) Penghapusan hashtags dan mention
-9) Penghapusan karaketer berupa digit angka</p>
+9) Penghapusan karaketer berupa digit angka
 
 <p align="justify">Kemudian dilakukan penghapusan *stop words*. *Stop words* merupakan kata-kata yang sering muncul, tetapi eksisten demi keperluan grammar penulisan saja dan tidak memberikan informasi yang berguna untuk pemodelan. Contoh *stop words* pada bahasa inggris seperti kata, *the*, *a*, *would*, *is*, *he*, *she*, *it*. Analisis data menggunakan Kumpulan stop words yang disediakan oleh package nltk. Kemudian, proses lemmatisasi kata dilakukan. Lemmatisasi merupakan proses pengubahan kata jamak atau kata dengan imbuhan menjadi ke bentuk dasarnya (*e.g.* *food’s* menjadi *food*, *Improvisation* menjadi *Improve*). Proses ini membantu dalam pelatihan model sebab hanya menggunakan kata dasarnya saja sebagai konteksnya dan tidak memperhatikan imbuhan.<p align="justify">  
 
